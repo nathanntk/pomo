@@ -1,6 +1,14 @@
 
 // script.js
 
+// flashcard functionality variables
+const flashcards_ = document.getElementsByClassName("flashcards_")[0];
+const createBox = document.getElementsByClassName("create-box")[0];
+const question = document.getElementById("question");
+const answer = document.getElementById("answer");
+let contentArray = localStorage.getItem('items') ?
+JSON.parse(localStorage.getItem('items')) : [];
+
 /******  Timer Feature  ******/
 
 // timer variable with properties containing duration of timer, breaks, and interval
@@ -157,35 +165,7 @@ timers.addEventListener('click', () => {
   location.href = './pages/timers.html';
 })
 
-const flashcards = document.getElementById('js-flash-cards');
-flashcards.addEventListener('click', () => {
-  window.open('./pages/flash-cards.html', '_blank');
-  //location.href = './pages/flash-cards.html';
-})
-
-const notes = document.getElementById('js-notes');
-  notes.addEventListener('click', () => {
-  location.href = './pages/notes.html';
-});
-
-const login = document.getElementById('js-login');
-login.addEventListener('click', () => {
-    location.href = './pages/login.html';
-});
-
-const register = document.getElementById('js-register');
-register.addEventListener('click', () => {
-    location.href = './pages/registration.html';
-});
-
 /****** Flashcards ******/
-
-const flashcards_ = document.getElementsByClassName("flashcards_")[0];
-const createBox = document.getElementsByClassName("create-box")[0];
-const question = document.getElementById("question");
-const answer = document.getElementById("answer");
-let contentArray = localStorage.getItem('items') ?
-JSON.parse(localStorage.getItem('items')) : [];
 
 contentArray.forEach(divMaker);
 function divMaker(text) {
@@ -233,7 +213,7 @@ function addFlashcard() {
 
 function delFlashcards() {
   localStorage.clear();
-  flashcards.innerHTML = '';
+  flashcards_.innerHTML = '';
   contentArray = [];
 }
 
